@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=DM+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-tbp-orange: #F95921;
+  --color-tbp-orange-hover: #E04D18;
+  --color-tbp-blue: #2746AD;
+  --color-tbp-blue-light: #3B5AC4;
+  --color-tbp-white: #FFFFFF;
+  --color-tbp-yellow: #FECE00;
+  --color-tbp-dark: #1A1A2E;
+  --color-tbp-darker: #12121F;
+  --color-tbp-mid: #222240;
+
+  --color-surface: #F5F6FA;
+  --color-surface-card: #FFFFFF;
+  --color-surface-raised: #FAFBFE;
+  --color-surface-muted: #F0F1F5;
+
+  --color-status-green: #10B981;
+  --color-status-green-bg: #ECFDF5;
+  --color-status-yellow: #F59E0B;
+  --color-status-yellow-bg: #FFFBEB;
+  --color-status-red: #EF4444;
+  --color-status-red-bg: #FEF2F2;
+
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-display: "Syne", sans-serif;
+  --font-mono: "DM Mono", monospace;
+
+  --shadow-card: 0 1px 3px rgba(26,26,46,0.04), 0 1px 2px rgba(26,26,46,0.06);
+  --shadow-card-hover: 0 10px 25px rgba(26,26,46,0.08), 0 4px 10px rgba(26,26,46,0.04);
+  --shadow-glow-orange: 0 0 20px rgba(249,89,33,0.15);
+
+  --animate-pulse-slow: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  --animate-fade-in: fadeIn 0.4s ease-out;
+  --animate-slide-up: slideUp 0.4s ease-out;
+
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-tbp-dark);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-weight: 600; /* Semibold pentru a fi mai evidențiat */
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #DDE0E9; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #C5C9D6; }
+
+/* Status pulse animation */
+@keyframes statusPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.15); }
+}
+.status-pulse { animation: statusPulse 2s ease-in-out infinite; }
+
+/* Urgency ring animation */
+@keyframes urgencyRing {
+  0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.3); }
+  70% { box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+  100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+}
+.urgency-ring { animation: urgencyRing 2s ease-out infinite; }
+
+/* Smooth card hover */
+.card-interactive {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Section reveal */
+.section-reveal {
+  animation: slideUp 0.4s ease-out both;
+}
+.section-reveal:nth-child(2) { animation-delay: 0.05s; }
+.section-reveal:nth-child(3) { animation-delay: 0.1s; }
+.section-reveal:nth-child(4) { animation-delay: 0.15s; }
